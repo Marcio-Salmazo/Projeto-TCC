@@ -1,49 +1,142 @@
-Trabalho de Conclusão de Curso (TCC) desenvolvido com o objetivo de conscientizar os jogadores sobre os 
-efeitos psicológicos da depressão, utilizando mecânicas imersivas e narrativas interativas.
+# Projeto TCC - *Serious Games* para conscientização sobre de distúrbios psicológicos:
 
-#### Sobre o Projeto:
+Este repositório contém o meu projeto de conclusão de curso da graduação, um serious game desenvolvido para a 
+conscientização social sobre transtornos psicológicos, especialmente aqueles associados à interações e experiencias 
+traumáticas como o cyberbullying, violência verbal, sobrecarga emocional e exposição prolongada a hostilidade 
+no meio digital.
 
-Este projeto consiste em um Serious Game desenvolvido na Clickteam Fusion Engine para simular os efeitos psicológicos da depressão. 
-O jogo busca criar uma experiência interativa e reflexiva para sensibilizar os jogadores sobre os desafios enfrentados por pessoas que convivem com essa condição.
-Por meio de mecânicas específicas, como alterações na jogabilidade, mudanças na percepção visual e variações na trilha sonora, o jogo transmite 
-sensações de isolamento, dificuldade de interação e exaustão, incentivando a empatia e o entendimento sobre o tema.
+O projeto investiga como experiências interativas e imersivas podem ser utilizadas como ferramentas de psicoeducação, 
+promovendo empatia, reflexão crítica e maior compreensão sobre o sofrimento psíquico, indo além de abordagens puramente 
+informativas. A proposta conceitual e metodológica estão descritas detalhadamente no artigo presente neste repositório.
 
-#### Objetivos:
+## Dados pessoais
+**Nome:** Marcio Salmazo Ramos \
+**Redes sociais e contato:**
 
-* Criar um alerta para os jogadores sobre os desafios psicológicos enfrentados por pessoas com depressão.
-* Proporcionar uma experiência imersiva que simula sintomas como falta de motivação, ansiedade e isolamento.
-* Explorar o potencial dos Serious Games na conscientização e discussão sobre saúde mental.
+| [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/marcio-ramos-b94669235) | [![Instagram](https://img.shields.io/badge/-Instagram-%23E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/marcio.salmazo) | [![Gmail](https://img.shields.io/badge/Gmail-333333?style=for-the-badge&logo=gmail&logoColor=red)](mailto:contato.marcio.salmazo19@gmail.com) | [![GitHub](https://img.shields.io/badge/GitHub-0077B5?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Marcio-Salmazo) |
+|---|---|---|---|
 
-#### Tecnologias Utilizadas:
+## 🎯 Objetivos do projeto
 
-* Engine: Clickteam Fusion
-* Arte e Design: Sprites 2D obtidos por meio do projeto Sonic Worlds e da página "Sprites resource"
-* Áudio: Trilha sonora adaptativa para reforçar a imersão, proveniente da Animação (Neon Genesis Evangelion)
-* Efeitos Sonoros: Provenientes do framework Sonic Worlds
+- **Objetivo Geral:**
 
-#### Como Jogar:
+Desenvolvimento de um jogo digital de caráter educacional (serious game) voltado à conscientização acerca de transtornos 
+psicológicos. A aplicação propõe representar, de forma experiencial e interativa, os efeitos do desgaste psicológico 
+decorrente de interações sociais e virtuais nocivas, por meio da simulação de estados mentais e emocionais associados a 
+determinados transtornos psicológicos, com o intuito de favorecer a empatia e a reflexão por parte dos jogadores.
 
-Executar o arquivo Running_The_Gauntlet.mfa por meio da aplicação clickteam fusion
+- **Objetivos Específicos** 
 
-#### Documentação do TCC
+  - Representar, de forma não literal e não estigmatizante, os impactos psicológicos de interações virtuais nocivas;
+  - Explorar o potencial dos jogos digitais como ferramentas de psicoeducação e sensibilização social;
+  - Investigar como narrativas simbólicas, estética surrealista e estímulos audiovisuais podem favorecer a reflexão emocional;
+  - Planejar mecanismos qualitativos de avaliação da experiência do usuário;
+  - Estabelecer uma base metodológica sólida para futuras análises empíricas com usuários.
+---
+### Observação sobre o Projeto original:
 
-O documento completo do TCC pode ser acessado na pasta no arquivo ProjetoTCC_Final 29.06.2023.docx. Ele contém:
+O projeto original consiste em um *Serious Game* desenvolvido na Clickteam Fusion Engine, em união com o framework
+*Sonic Worlds* para simular os efeitos psicológicos da depressão. A ideia era criar uma experiência interativa capaz 
+de promover uma reflexão para sensibilizar e conscientizar os jogadores sobre os desafios enfrentados por 
+pessoas que convivem com essa condição.
 
-1 - Introdução 
-2 - Fundamentação teórica
-  2.1 - Psicoeducação
-  2.2 - Psicologia no contexto virtual
-  2.3 - Relações sociais no ambiente virtual
-    2.3.1 - Processos mentais disruptivos
-  2.4 - Gamificação e Serious Games
-  2.5 - Game Engines
-    2.5.1 - Clickteam Fusion
-3 - Trabalhos correlatos
-  3.1 - Neon Genesis Evangelion
-4 - Metodologia
-  4.1 - Construção da aplicação
-  4.2 - Construção do formulário
-5 - Resultados e discussões
-6 - Conclusões
-7 - Trabalhos futuros
-8 - Referências
+Julguei a implementação original como sendo muito rasa e apressada. A falta de experiência aliada ao curto prazo de
+desenvolvimento geraram um resultado pouco inspirado, que acaba criando uma narrativa fraca e pouco envolvente, sem
+o uso de técnicas que de fato ampliam a imersão, com isso, O repositório busca trazer uma revisão do projeto, 
+reconstruindo-o do zero e garantindo uma experiência mais alinhada com as expectativas originais.
+
+## 📂 Estrutura de diretórios do projeto
+
+O repositório está organizado por pastas de forma temática/projeto, por exemplo:
+
+    ├── Artigos de referência/
+    ├── Projeto Antigo/
+            ├── Referencias/
+            ├── Antiga escrita do Artigo.docx
+            ├── Apresentacao do projeto.pptx
+            └── Running_The _Gauntlet.mfa
+    ├── Projeto TEX e Artigo (novo)/
+    └── README
+
+* **Artigos de referência:** contém os artigos utilizados para a produção do documento de dissertação do projeto;
+* **Projeto Antigo**: contém os arquivos de desenvolvimento e documentação do projeto original; 
+  * **Referencias** - contém os artigos utilizados para a produção da escrita do antigo projeto.
+  * **Antiga escrita do Artigo.docx** - Artigo escrito do antigo projeto, antes da reformulação
+  * **Apresentacao do projeto.pptx** - Apresentação em slides do antigo projeto.
+  * **Running_The _Gauntlet.mfa** - Arquivo do projeto do jogo desenvolvido utilizando a Clickteam Fusion + Sonic Worlds.
+* **Projeto TEX e Artigo (novo):** Contém o artigo do projeto, bem como o projeto fonte em Latex.
+
+## 🧠 Fundamentação Teórica
+
+O projeto fundamenta-se principalmente nos seguintes eixos teóricos:
+
+* **Psicoeducação:** uso estruturado de informação e experiências para ampliar a compreensão sobre 
+transtornos psicológicos e reduzir estigmas;
+* **Virtualização das relações sociais:** impactos cognitivos, emocionais e 
+comportamentais das interações mediadas por tecnologias digitais;
+* **Interações digitais nocivas:** cyberbullying, hostilidade online, anonimato e violência simbólica;
+* **Processos mentais disruptivos:** ansiedade, episódios depressivos, sofrimento emocional e uso 
+compulsivo de tecnologias;
+* **Serious games e gamificação:** jogos como instrumentos educativos, sociais e de conscientização;
+* **Design emocional e imersão narrativa:** uso de estética, narrativa e mecânicas para provocar reflexão subjetiva.
+
+## 🎮 Sobre o Jogo em desenvolvimento
+
+O título Running the Gauntlet remete à metáfora de atravessar um percurso marcado por agressões recorrentes, 
+simbolizando a experiência subjetiva de indivíduos expostos continuamente a interações hostis e degradantes. 
+O jogo não busca retratar eventos históricos ou clínicos específicos, mas sim traduzir sensações psicológicas 
+de forma simbólica. O jogo é concebido como uma ferramenta de conscientização, não como instrumento 
+terapêutico ou diagnóstico.
+
+### Características Principais:
+
+  * **Gênero:** Terror psicológico / experiência narrativa interativa
+  * **Abordagem:** Metafórica, indireta e não linear
+  * **Estética:** Surrealista, simbólica e emocionalmente orientada
+  * **Foco:** Vivência emocional e reflexão, não desempenho ou competição
+  * **Narrativa:** Fragmentada e interpretativa
+
+## 👥 Público-Alvo
+
+**O projeto foi concebido para atender dois perfis principais de usuários:**
+
+1. Usuários sem sofrimento psicológico identificado, com foco na promoção de empatia, 
+conscientização e compreensão social;
+
+2. Usuários que vivenciam algum nível de sofrimento psíquico, para os quais a experiência 
+pode atuar como espaço de reflexão simbólica e autoexploração.
+
+⚠️ **Importante:** ⚠️ O jogo não substitui acompanhamento psicológico ou psiquiátrico, nem realiza diagnóstico ou intervenção clínica. Seu papel é exclusivamente educativo e reflexivo.
+
+---
+
+## ⚖️ Considerações Éticas
+
+* O projeto evita representações explícitas, sensacionalistas ou potencialmente traumáticas;
+* A experiência é interpretativa, permitindo diferentes níveis de envolvimento;
+* A participação em avaliações futuras será voluntária;
+* O bem-estar emocional do usuário é priorizado em todas as decisões de design.
+
+## 🔮 Trabalhos Futuros
+
+* Finalização e refinamento do jogo (remake completo);
+* Aplicação de estudos com grupos experimentais e grupos de controle;
+* Coleta e análise sistemática de dados qualitativos;
+* Expansão para contextos educacionais e institucionais;
+* Adaptação para outras plataformas e públicos.
+
+---
+
+## 📬 Contato
+
+- Autor: Marcio Salmazo Ramos
+- Área: Ciência de Dados, Computação e Psicologia Aplicada
+- Instituição: Universidade de Uberaba (UNIUBE)
+
+
+
+
+
+
+
+
