@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://igp0met4r1pl"]
+
+[ext_resource type="Script" uid="uid://bstte0e12dttf" path="res://player.gd" id="1_sodr8"]
+[ext_resource type="Script" uid="uid://c283fvnww6ek5" path="res://anxiety_controller.gd" id="2_52yot"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_sodr8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dlglw"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_52yot"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rj8j4"]
+size = Vector2(1097, 20)
+
+[node name="AnxietyStage" type="Node2D" unique_id=572524228]
+position = Vector2(151, 324)
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1874634004]
+script = ExtResource("1_sodr8")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=635884388]
+scale = Vector2(20, 20)
+texture = SubResource("CanvasTexture_sodr8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=2145121332]
+shape = SubResource("RectangleShape2D_dlglw")
+
+[node name="AnxietyController" type="Node" parent="." unique_id=731126768]
+script = ExtResource("2_52yot")
+
+[node name="Heartbeat" type="AudioStreamPlayer2D" parent="." unique_id=572280537]
+
+[node name="BasicFloor" type="StaticBody2D" parent="." unique_id=1378600798]
+position = Vector2(-115, 48)
+
+[node name="Sprite2D" type="Sprite2D" parent="BasicFloor" unique_id=382597618]
+position = Vector2(538.5, -1.9073486e-06)
+scale = Vector2(1097, 20.000004)
+texture = SubResource("CanvasTexture_52yot")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BasicFloor" unique_id=1544444245]
+position = Vector2(538.5, 0)
+shape = SubResource("RectangleShape2D_rj8j4")
