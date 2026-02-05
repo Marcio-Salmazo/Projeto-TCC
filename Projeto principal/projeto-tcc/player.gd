@@ -15,7 +15,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 	
 	var ansiedade = anxiety_controller.ansiedade
-	var instabilidade = randf_range(-ansiedade, ansiedade)
+	var instabilidade = randf_range(-ansiedade * 10, ansiedade * 10)
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.

@@ -13,7 +13,6 @@
 size = Vector2(1097, 20)
 
 [node name="AnxietyStage" type="Node2D" unique_id=572524228]
-position = Vector2(151, 324)
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1874634004]
 script = ExtResource("1_sodr8")
@@ -24,6 +23,9 @@ texture = SubResource("CanvasTexture_sodr8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=2145121332]
 shape = SubResource("RectangleShape2D_dlglw")
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=406955535]
+position_smoothing_enabled = true
 
 [node name="AnxietyController" type="Node" parent="." unique_id=731126768]
 script = ExtResource("2_52yot")
