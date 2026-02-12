@@ -1,0 +1,27 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "TilesetTest.tmx",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "TilesetTest.tmx": {
+            "scale": 0.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 148,
+                "y": 306
+            }
+        }
+    },
+    "map.lastUsedFormat": "tmx",
+    "openFiles": [
+        "TilesetTest.tmx"
+    ],
+    "project": "Fase teste (Ansiedade).tiled-project",
+    "recentFiles": [
+        "TilesetTest.tmx"
+    ]
+}

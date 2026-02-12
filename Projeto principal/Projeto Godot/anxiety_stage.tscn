@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://igp0met4r1pl"]
+
+[ext_resource type="Script" uid="uid://bstte0e12dttf" path="res://player.gd" id="1_sodr8"]
+[ext_resource type="Script" uid="uid://c283fvnww6ek5" path="res://anxiety_controller.gd" id="2_52yot"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_sodr8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sodr8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sodr8"]
+size = Vector2(16.064651, 0.7927635)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_52yot"]
+
+[node name="AnxietyStage" type="Node2D" unique_id=572524228]
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1874634004]
+floor_constant_speed = true
+floor_snap_length = 5.0
+script = ExtResource("1_sodr8")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=635884388]
+position = Vector2(0, 1.66893e-06)
+scale = Vector2(20, 30.000002)
+texture = SubResource("CanvasTexture_sodr8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=2145121332]
+shape = SubResource("CapsuleShape2D_sodr8")
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=406955535]
+position_smoothing_enabled = true
+
+[node name="AnxietyController" type="Node" parent="." unique_id=731126768]
+script = ExtResource("2_52yot")
+
+[node name="Heartbeat" type="AudioStreamPlayer2D" parent="." unique_id=572280537]
+
+[node name="Section A" type="StaticBody2D" parent="." unique_id=1422701618]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Section A" unique_id=379351371]
+polygon = PackedVector2Array(-520, 96, 525, 98, 985, 54, 1377, -36, 1638, -93, 1998, -120, 2243, -128, 2511, -120, 2825, -86, 3120, -18, 3421, 106, 3612, 165, 4037, 260, 4759, 360, 5646, 396, 6186, 370, 9501, 372, 13957, 363, 13955, 703, -519, 709)
+
+[node name="Polygon2D" type="Polygon2D" parent="Section A/CollisionPolygon2D" unique_id=768082657]
+polygon = PackedVector2Array(-520, 96, 525, 98, 985, 54, 1377, -36, 1638, -93, 1998, -120, 2243, -128, 2511, -120, 2825, -86, 3120, -18, 3421, 106, 3612, 165, 4037, 260, 4759, 360, 5646, 396, 6186, 370, 9501, 372, 13957, 363, 13955, 703, -519, 709)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Section A" unique_id=657240587]
+position = Vector2(2456, -157)
+scale = Vector2(22.5, 9.5)
+shape = SubResource("RectangleShape2D_sodr8")
+one_way_collision = true
+one_way_collision_margin = 2.2
+debug_color = Color(0, 0.6, 0.69803923, 0.73333335)
+
+[node name="Sprite2D" type="Sprite2D" parent="Section A" unique_id=1909563169]
+position = Vector2(2456, -157)
+scale = Vector2(361.9997, 8.000002)
+texture = SubResource("CanvasTexture_52yot")
