@@ -49,22 +49,41 @@ reconstruindo-o do zero e garantindo uma experiência mais alinhada com as expec
 
 O repositório está organizado por pastas de forma temática/projeto, por exemplo:
 
-    ├── Artigos de referência/
-    ├── Projeto Antigo/
-            ├── Referencias/
-            ├── Antiga escrita do Artigo.docx
-            ├── Apresentacao do projeto.pptx
-            └── Running_The _Gauntlet.mfa
-    ├── Projeto TEX e Artigo (novo)/
+    ├── Main Project/
+    ├    ├── Projeto Godot/
+    ├    ├── Raw Tiles and Sprites/
+    ├    ├── Tiled Projects/
+    ├    └── Documentacao do projeto.docx
+    ├
+    ├── Old Project/
+    ├     ├── Referencias/
+    ├     ├── Antiga escrita do Artigo.docx
+    ├     ├── Apresentacao do projeto.pptx
+    ├     └── Running_The _Gauntlet.mfa
+    ├    
+    ├── Projeto TEX/
+    ├     ├── Referencias da Monografia/
+    ├     ├── Remake_do_TCC.pdf
+    ├     └── Remake_do_TCC.zip
+    ├
     └── README
 
-* **Artigos de referência:** contém os artigos utilizados para a produção do documento de dissertação do projeto;
-* **Projeto Antigo**: contém os arquivos de desenvolvimento e documentação do projeto original; 
-  * **Referencias** - contém os artigos utilizados para a produção da escrita do antigo projeto.
-  * **Antiga escrita do Artigo.docx** - Artigo escrito do antigo projeto, antes da reformulação
-  * **Apresentacao do projeto.pptx** - Apresentação em slides do antigo projeto.
+* **Main Project:** Contém os arquivos de desenvolvimento e documentação do projeto atual.
+  * **Projeto Godot** - Contém os arquivos de desenvolvimento do projeto na Godot;
+  * **Raw Tiles and Sprites** - Contém as folhas de sprites e tilesets no formato puro (.png ou .jpeg);
+  * **Tiled Projects** - Layout de fases desenvolvidos na plataforma 'Tiled';
+  * **Documentacao do projeto.docx** - Arquivo de documentação do projeto, definindo escopo e ideias chaves.
+
+
+* **Old Project:** Contém os arquivos de desenvolvimento e documentação do projeto original.
+  * **Referencias** - contém os artigos utilizados para a produção da escrita do antigo projeto;
+  * **Antiga escrita do Artigo.docx** - Artigo escrito do antigo projeto, antes da reformulação;
+  * **Apresentacao do projeto.pptx** - Apresentação em slides do antigo projeto;
   * **Running_The _Gauntlet.mfa** - Arquivo do projeto do jogo desenvolvido utilizando a Clickteam Fusion + Sonic Worlds.
-* **Projeto TEX e Artigo (novo):** Contém o artigo do projeto, bem como o projeto fonte em Latex.
+
+
+* **Projeto TEX:** Contém o artigo compilado do projeto, bem como o projeto LaTeX compactado.
+  * O diretório *'Referencias da Monografia'* contém os artigos utilizados como referencia bibliográfica para a produção da escrita do projeto.
 
 ## 🧠 Fundamentação Teórica
 

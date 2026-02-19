@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://igp0met4r1pl"]
+
+[ext_resource type="Script" uid="uid://bstte0e12dttf" path="res://player.gd" id="1_sodr8"]
+[ext_resource type="Script" uid="uid://c283fvnww6ek5" path="res://anxiety_controller.gd" id="2_52yot"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_sodr8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sodr8"]
+radius = 42.0
+height = 151.0
+
+[node name="AnxietyStage" type="Node2D" unique_id=572524228]
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1874634004]
+floor_constant_speed = true
+floor_snap_length = 5.0
+script = ExtResource("1_sodr8")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=635884388]
+position = Vector2(32, -60.499996)
+scale = Vector2(83.99999, 151.00002)
+texture = SubResource("CanvasTexture_sodr8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=2145121332]
+position = Vector2(32, -60.499996)
+shape = SubResource("CapsuleShape2D_sodr8")
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=406955535]
+zoom = Vector2(0.38, 0.38)
+position_smoothing_enabled = true
+
+[node name="AnxietyController" type="Node" parent="." unique_id=731126768]
+script = ExtResource("2_52yot")
+
+[node name="Heartbeat" type="AudioStreamPlayer2D" parent="." unique_id=572280537]
+
+[node name="Section A" type="StaticBody2D" parent="." unique_id=1422701618]
+
+[node name="MainFloor" type="CollisionPolygon2D" parent="Section A" unique_id=379351371]
+polygon = PackedVector2Array(-520, 96, 525, 98, 985, 54, 1377, -36, 1638, -93, 1998, -120, 2243, -128, 2511, -120, 2825, -86, 3120, -18, 3421, 106, 3612, 165, 4037, 260, 4759, 360, 5646, 396, 6186, 370, 7191, 171, 7959, 106, 8620, 102, 8937, 157, 9501, 372, 10848, 315, 11714, 174, 13002, 56, 13882, -3, 14326, -11, 14741, 189, 15546, 690, 17962, 690, 19067, 625, 19923, -263, 20139, -1314, 20855, -1617, 21721, -1617, 21732, 1514, 15104, 1524, 13697, 1524, -529, 1509)
+
+[node name="Polygon2D" type="Polygon2D" parent="Section A/MainFloor" unique_id=768082657]
+polygon = PackedVector2Array(-520, 96, 525, 98, 985, 54, 1377, -36, 1638, -93, 1998, -120, 2243, -128, 2511, -120, 2825, -86, 3120, -18, 3421, 106, 3612, 165, 4037, 260, 4759, 360, 5646, 396, 6186, 370, 7191, 171, 7959, 106, 8620, 102, 8937, 157, 9501, 372, 10848, 315, 11714, 174, 13002, 56, 13882, -3, 14326, -11, 14741, 189, 15546, 690, 17962, 690, 19067, 625, 19923, -263, 20139, -1314, 20855, -1617, 21721, -1617, 21732, 1514, 15104, 1524, 13697, 1524, -529, 1509)
+
+[node name="Interactive" type="Node2D" parent="." unique_id=885665093]
+position = Vector2(32, -60.499996)
