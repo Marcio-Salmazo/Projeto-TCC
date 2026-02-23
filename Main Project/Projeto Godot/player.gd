@@ -3,11 +3,11 @@ extends CharacterBody2D
 
 # @onready significa que essa variável só será atribuída quando o nó já estiver pronto na cena
 # var anxiety_controller recebe os dados do nó (genérico) AnxietyController
-@onready var anxiety_controller = get_parent().get_node("AnxietyController")
+@onready var anxiety_controller = get_parent().get_node("Anxiety Controller")
 
 # Atribuição de valores constantes e estáticos para velocidade, gravidade e pulo
-const SPEED := 700.0
-const JUMP_VELOCITY := -1200.0
+const SPEED := 80.0
+const JUMP_VELOCITY := -300.0
 
 # Função responsável por processar a física do player
 # A função é chamada em um intervalo fixo, sincronizado com o sistema de física da engine
@@ -26,7 +26,7 @@ func _physics_process(delta: float) -> void:
 	# Evita que o personagem acumule velocidade vertical indevida.
 	else:
 		velocity += get_gravity() * delta
-		velocity.y += 5
+		#velocity.y += 5
 
 	# ============================================================================================ #
 	# 								CONTROLE DE PULO

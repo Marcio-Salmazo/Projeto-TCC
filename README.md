@@ -51,8 +51,7 @@ O repositório está organizado por pastas de forma temática/projeto, por exemp
 
     ├── Main Project/
     ├    ├── Projeto Godot/
-    ├    ├── Raw Tiles and Sprites/
-    ├    ├── Tiled Projects/
+    ├    ├── Tiled Test Projects/
     ├    └── Documentacao do projeto.docx
     ├
     ├── Old Project/
@@ -69,9 +68,8 @@ O repositório está organizado por pastas de forma temática/projeto, por exemp
     └── README
 
 * **Main Project:** Contém os arquivos de desenvolvimento e documentação do projeto atual.
-  * **Projeto Godot** - Contém os arquivos de desenvolvimento do projeto na Godot;
-  * **Raw Tiles and Sprites** - Contém as folhas de sprites e tilesets no formato puro (.png ou .jpeg);
-  * **Tiled Projects** - Layout de fases desenvolvidos na plataforma 'Tiled';
+  * **Projeto Godot** - Contém os arquivos de desenvolvimento do projeto na Godot e os Assets utilizados;
+  * **Tiled Test Projects** - Layout teste de fases desenvolvidos na plataforma 'Tiled';
   * **Documentacao do projeto.docx** - Arquivo de documentação do projeto, definindo escopo e ideias chaves.
 
 
