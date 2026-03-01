@@ -43,6 +43,11 @@ const WALL_JUMP_FORCE_Y := -260.0 # Força de pulo no eixo Y
 const WALL_JUMP_LOCK_TIME := 0.2 # Tempo que o personagem fica 'colado'
 
 # --------------------------------------------------------------------------------------------------
+# Variáveiis de conexão com o Script de ataque
+
+@onready var attack_controller = $"AttackController"
+
+# --------------------------------------------------------------------------------------------------
 # Funções do script
 
 # Função executada apenas ao instanciar o objeto
@@ -161,4 +166,13 @@ func _physics_process(delta: float) -> void:
 	# A variável que se conecta ao controlador de animações executa a função Update_state
 	# responsável por pegar o estado atual do personagem e aplicar animações
 	animation_controller.update_state_player(velocity, is_on_floor(), is_on_wall())
+	
+	# ============================================================================================ #
+	# 					ENVIO DE SINAIS AO CONTROLADOR DE ATAQUE ()
+	# ============================================================================================ #
+	
+	if Input.is_action_just_pressed("attack"):
+		attack_controller.start_attack()
+
+	attack_controller.update(delta)
 	

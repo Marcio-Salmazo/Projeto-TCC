@@ -22,6 +22,14 @@ window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
 
+[layer_names]
+
+2d_physics/layer_1="Player Collider"
+2d_physics/layer_2="Enemy Collider"
+2d_physics/layer_3="Attack Box"
+2d_physics/layer_4="Ground Tiles"
+2d_physics/layer_5="Interactable Tiles"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
