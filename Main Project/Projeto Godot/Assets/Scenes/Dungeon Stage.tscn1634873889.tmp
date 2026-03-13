@@ -12,38 +12,6 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vt8wg"]
 size = Vector2(14.129, 19)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7st12"]
-atlas = ExtResource("5_vt8wg")
-region = Rect2(0, 128, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fpp4b"]
-atlas = ExtResource("5_vt8wg")
-region = Rect2(32, 128, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5ip5h"]
-atlas = ExtResource("5_vt8wg")
-region = Rect2(64, 128, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bflfd"]
-atlas = ExtResource("5_vt8wg")
-region = Rect2(96, 128, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_had05"]
-atlas = ExtResource("5_vt8wg")
-region = Rect2(0, 160, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_10b4v"]
-atlas = ExtResource("5_vt8wg")
-region = Rect2(32, 160, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m74cd"]
-atlas = ExtResource("5_vt8wg")
-region = Rect2(64, 160, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sxglw"]
-atlas = ExtResource("5_vt8wg")
-region = Rect2(96, 160, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_n0s5i"]
 atlas = ExtResource("5_vt8wg")
 region = Rect2(64, 96, 32, 32)
@@ -136,35 +104,6 @@ region = Rect2(64, 320, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7st12")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fpp4b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5ip5h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bflfd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_had05")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_10b4v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m74cd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sxglw")
-}],
-"loop": true,
-"name": &"Player Attack",
-"speed": 12.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_n0s5i")
 }, {
 "duration": 1.0,
@@ -175,7 +114,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Player Crawl",
-"speed": 6.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -192,7 +131,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Player Fall",
-"speed": 7.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -209,7 +148,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Player Idle",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -297,7 +236,6 @@ floor_snap_length = 5.0
 script = ExtResource("4_5sed6")
 anxiety_controller_path = NodePath("../Player Controllers/Player Events Controller")
 animation_controller_path = NodePath("../Player Controllers/Player Animations")
-attack_controller_path = NodePath("../Player Controllers/Attack Controller")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Player CharacterBody2D" unique_id=2145121332]
 position = Vector2(0.5, 4)
@@ -317,8 +255,7 @@ process_callback = 0
 texture_filter = 1
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_dlglw")
-animation = &"Player Attack"
-frame_progress = 0.018514177
+animation = &"Player WallJump"
 
 [node name="Player Controllers" type="Node" parent="Player" unique_id=1039228365]
 
@@ -332,7 +269,6 @@ player_sprite_path = NodePath("../../Player CharacterBody2D/Player Visuals/Main 
 [node name="Attack Controller" type="Node" parent="Player/Player Controllers" unique_id=974201937]
 script = ExtResource("8_x645v")
 hitbox_path = NodePath("../../Hitboxes/Attack Hitbox Area2D")
-animation_controller_path = NodePath("../Player Animations")
 
 [node name="Hitboxes" type="Node" parent="Player" unique_id=366497991]
 

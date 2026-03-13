@@ -5,43 +5,46 @@ extends Node
 # Recebe o nó no caminho especificado previamente
 @onready var sprite = get_node(player_sprite_path)
 
+# Lista de estados possíveis voltados para a implementação do FSM,
+# Deve seguir o mesmo enum definido em Play_Controller.gd
+enum PlayerState {
+	IDLE,
+	WALK,
+	JUMP,
+	FALL,
+	WALL_SLIDE,
+	ATTACK
+}
+
+# Armazena o estado padrão de ataque
+var attacking := false
 # ============================================================================================ #
 # 						FUNÇÃO PARA CONTROLE DE ANIMAÇÕES DO PLAYER
 # ============================================================================================ #
 
-func update_state_player(velocity, on_floor, on_wall):
-	
-	# Caso não esteja em contato com o solo:
-	if not on_floor:
-		
-		# Se estiver em contato com parede, mas não com o solo e a 
-		# velocidade em Y for positiva (Estiver em queda)
-		# a animação de escorregar é iniciada
-		if on_wall and velocity.y !=0:
-			sprite.play("Player WallJump")
-		
-		# Se não estiver em contato com o chão e a velocidade em Y for negativa
-		# (Estiver saltando) a animação de pulo é iniciada
-		elif velocity.y < 0:
-			sprite.play("Player Jump")
-			
-		# Se não estiver em contato com o chão, nem com a parede 
-		# e a velocidade em Y for positiva a animação de queda é iniciada
-		else:
-			sprite.play("Player Fall")
-	
-	# Se estiver no chão e a velocidade aboluta em X for positiva 
-	# a animação de andar será iniciada
-	elif abs(velocity.x) > 5:
-		sprite.play("Player Walk")
-	
-	# Se estiver no chão, a animação de ficar parado é iniciada
-	else:
-		sprite.play("Player Idle")
-	
-	# Inverte a orientação da imagem sempre que a velocidade em X for negativa
-	# Nos momentos em que o jogador esteja no chão
-	# Quando o player para (velocity.x == 0),
-	#o sprite pode virar inesperadamente dependendo do último valor.
-	if velocity.x != 0:
-		sprite.flip_h = velocity.x < 0
+# Se a animação atual for diferente deve-se tocar animação nova. Senão, não fazer nada
+# Ela evita de ficar reiniciando o loop de animação, caso a mesma condicional seja atendida.
+func play(anim_name: String):
+	if sprite.animation != anim_name:
+		sprite.play(anim_name)
+
+# Essa função apenas atualiza o estado de ataque, não toca animação diretamente.
+func update_event_attack(is_attacking):
+	attacking = is_attacking
+
+func update_player_animation(state):
+
+	match state:
+
+		PlayerState.ATTACK:
+			play("Player Attack")
+		PlayerState.WALL_SLIDE:
+			play("Player WallJump")
+		PlayerState.JUMP:
+			play("Player Jump")
+		PlayerState.FALL:
+			play("Player Fall")
+		PlayerState.WALK:
+			play("Player Walk")
+		PlayerState.IDLE:
+			play("Player Idle")
