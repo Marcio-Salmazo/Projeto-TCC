@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cjgkb5ngv87x2"
-path="res://.godot/imported/blade-effects.png-95de1092a9eb7076821972b865c86077.ctex"
+path="res://.godot/imported/blade-effects.png-da8088342c1a837434019bda99a8e5b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Extra Tiles/Mini Legend Starter Buid/effects/blade-effects.png"
-dest_files=["res://.godot/imported/blade-effects.png-95de1092a9eb7076821972b865c86077.ctex"]
+source_file="res://Assets/Global/Characters/blade-effects.png"
+dest_files=["res://.godot/imported/blade-effects.png-da8088342c1a837434019bda99a8e5b4.ctex"]
 
 [params]
 

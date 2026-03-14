@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bl2smgsqn5bpq"
-path="res://.godot/imported/dust-friction.png-4c2d552dad2c7e7238d18b95d88b5cca.ctex"
+path="res://.godot/imported/dust-friction.png-2d386c893789bc30d44c8e4efc1b4a14.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Extra Tiles/Mini Legend Starter Buid/effects/dust-friction.png"
-dest_files=["res://.godot/imported/dust-friction.png-4c2d552dad2c7e7238d18b95d88b5cca.ctex"]
+source_file="res://Assets/Global/Characters/dust-friction.png"
+dest_files=["res://.godot/imported/dust-friction.png-2d386c893789bc30d44c8e4efc1b4a14.ctex"]
 
 [params]
 

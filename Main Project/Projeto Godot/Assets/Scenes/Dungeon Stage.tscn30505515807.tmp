@@ -119,7 +119,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bflfd")
 }],
-"loop": false,
+"loop": true,
 "name": &"Player Attack",
 "speed": 5.0
 }, {
@@ -293,6 +293,7 @@ texture_repeat = 1
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_dlglw")
 animation = &"Player Attack"
+frame_progress = 0.47987503
 speed_scale = 3.0
 
 [node name="AnimatedSprite2D (sword)" type="AnimatedSprite2D" parent="Player/Player CharacterBody2D/Player Visuals/Main Sprites" unique_id=1282740610]
