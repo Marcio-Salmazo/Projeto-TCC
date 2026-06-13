@@ -11,9 +11,12 @@ extends Node
 @export var blade_effects_sprite_path: NodePath
 @onready var blade_sprite = get_node(blade_effects_sprite_path)
 
+@export var atack_controler_path: NodePath
+@onready var attack_controller = get_node(atack_controler_path)
+
 # ------------------------------------------------------------------------------
 # Sinais a serem enviados para os demais scripts associados
-signal attack_animation_finished
+signal ANIM_FINISHED_ATK
 
 # ------------------------------------------------------------------------------
 # Lista de estados possíveis voltados para a implementação do FSM
@@ -30,14 +33,17 @@ enum PlayerState {
 # FUNÇÃO READY PARA INICIALIZAÇÃO
 # ==============================================================================
 func _ready():
-
-	# Os nós 'AnimatedSprite2D' possuem um sinal referente ao término de sua
-	# animação, aqui, os sinais emitidos ao fim da animação são conectados à
-	# função local _on_animation_finished
-	if player_sprite:
-		player_sprite.animation_finished.connect(_on_animation_finished)
-	elif blade_sprite:
-		blade_sprite.animation_finished.connect(_on_animation_finished)
+		
+	# Estado normal do sprite do ataque fica escondido
+	blade_sprite.hide()
+	
+	# Conecta os sinais recebidos de attack controller 
+	# às funções de animção do ataque
+	if attack_controller.has_signal("ATK_CONTROLLER_ATK_STARTED"):
+		attack_controller.ATK_CONTROLLER_ATK_STARTED.connect(_on_attack_start)	
+		
+	if attack_controller.has_signal("ATK_CONTROLLER_ATK_FINISHED"):
+		attack_controller.ATK_CONTROLLER_ATK_FINISHED.connect(_on_attack_end)
 
 # ==============================================================================
 # FUNÇÃO AUXILIAR PARA EVITAR QUE UMA MESMA ANIMAÇÃO SEJA REINICIADA
@@ -64,22 +70,28 @@ func update_player_animation(state):
 			_play("Player Walk")
 		PlayerState.IDLE:
 			_play("Player Idle")
+		PlayerState.ATTACK:
+			
+			_play("Player Attack")
+			blade_sprite.show() 
+			blade_sprite.play("Blade Animation")
+			
+			if blade_sprite.animation_finished:
+				emit_signal("ANIM_FINISHED_ATK")
 
 # ==============================================================================
-# ANIMAÇÃO DE ATAQUE
+# ANIMAÇÃO DE ATAQUE - START
 # ==============================================================================
-func play_attack_animation():
-	blade_sprite.play("Blade Animation")
-	player_sprite.play("Player Attack")
+func _on_attack_start():
+	pass
+	# Exibe o sprite e toca a animação
+	#blade_sprite.show() 
+	#blade_sprite.play("Blade Animation")
 	
 # ==============================================================================
-# CALLBACK DE ANIMAÇÃO
+# CALLBACK DE ANIMAÇÃO - END 
 # ==============================================================================
-func _on_animation_finished():
+func _on_attack_end():
 	
-	# Emite um sinal de término da animação referente aos ataques
-	# tanto do player, quanto dos efeitos da lâmina. Estes sinais
-	# serão processados pelo Attack Controller
-	if player_sprite.animation == "Player Attack": 
-		if blade_sprite.animation == "Blade Animation":
-			emit_signal("attack_animation_finished")
+	# Esconde o sprite
+	blade_sprite.hide()

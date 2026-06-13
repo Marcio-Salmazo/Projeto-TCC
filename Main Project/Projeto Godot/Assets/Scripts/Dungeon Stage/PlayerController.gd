@@ -18,8 +18,10 @@ extends CharacterBody2D
 # O operador $ é um atalho conveniente para a função get_node(...),
 # ele permite acessar um nó filho sem a necessidade de usar métodos como.
 @onready var visuals = $"Player Visuals"
-@onready var spr_rotator = $"Player Visuals/Main Sprites"
-@onready var sprite = $"Player Visuals/Main Sprites/AnimatedSprite2D (player)"
+@onready var spr_rotator = $"Player Visuals/Player Sprite"
+@onready var sprite = $"Player Visuals/Player Sprite/AnimatedSprite2D (player)"
+@onready var player_pivot = $"Player Visuals/Player Pivot/"
+@onready var attack_sprite = $"Player Visuals/Player Pivot/AnimatedSprite2D (sword)"
 
 # ------------------------------------------------------------------------------
 # Lista de estados possíveis voltados para a implementação do FSM,
@@ -35,9 +37,11 @@ enum PlayerState {
 # Definição dos estados padrão para inicialização 
 var current_state : PlayerState = PlayerState.IDLE
 var previous_state : PlayerState = PlayerState.IDLE
+# Armazena a direção atual do jogador, para influenciar
+var facing_direction := 1  # 1 = direita, -1 = esquerda
 
 # ------------------------------------------------------------------------------
-# Variáveiis responsaveis pela movimentação física
+# Variáveis responsaveis pela movimentação física
 # O operador := significa declaração com tipagem automática (type inference)
 
 const SPEED := 100.0 # Velocidade de movimento
@@ -68,18 +72,12 @@ func _ready():
 	# OBSERVAÇÃO (Inspetor do CharacterBody2D):
 	# Max Angle -> Angulo máximo que a engine considera a inclinação como 'chão'
 	# Snap Length -> Evitando micro saltos.
-	
-	# Conecta sinal enviado pelo AttackController
-	# Caso o attack_controller tenha um sinal denominado "attack_finished", 
-	# esse sinal é conectado à função local _on_attack_finished no momento
-	# em que ele for emitido pelo nó definido por "attack_controller"
-	if attack_controller.has_signal("attack_finished"):
-		attack_controller.attack_finished.connect(_on_attack_finished)
 
 # ==============================================================================
 # FUNÇÃO PHYSICS (EXECUTA EM LOOP DE ACORDO COM O FPS)
 # ==============================================================================
 func _physics_process(delta):
+	
 	# Função principal do script responsável por processar a física do player
 	# Flags abaixo indicam se o personagem está em contato com o chão ou parede
 	var on_floor = is_on_floor()
@@ -90,7 +88,7 @@ func _physics_process(delta):
 	_handle_movement(delta)
 	_handle_jump(on_floor, on_wall)
 	_handle_rotation(on_floor, spr_rotator, delta)
-	_handle_attack_input(on_wall)
+	#_handle_attack(on_wall)
 	
 	# método responsável por mover corpos de personagem (CharacterBody2D/3D) 
 	# que precisam de detecção de colisão, deslizamento em paredes e rampas.
@@ -101,6 +99,35 @@ func _physics_process(delta):
 	# Atualiza a animação a ser executada
 	_update_animation(current_state)
 
+	# Faz com que a direção do pivo siga a direção do jogador
+	player_pivot.scale.x = facing_direction
+
+# ==============================================================================
+# FUNÇÃO PARA LIDAR COM CARACTERISITICAS ESPECÍFICAS DE CADA ESTADO
+# ==============================================================================
+
+func handle_state(state):
+
+	match state:
+		
+		PlayerState.ATTACK:
+			player_pivot.visible = true # Ativa o pivot
+
+		PlayerState.WALL_SLIDE:
+			player_pivot.visible = false
+
+		PlayerState.JUMP:
+			player_pivot.visible = false
+
+		PlayerState.FALL:
+			player_pivot.visible = false
+
+		PlayerState.WALK:
+			player_pivot.visible = false
+		PlayerState.IDLE:
+			
+			player_pivot.visible = false
+
 # ==============================================================================
 # FUNÇÃO QUE CONTROLA O FSM
 # ==============================================================================
@@ -108,7 +135,7 @@ func _update_state(on_floor, on_wall, param_previous_state):
 	# Função responsável apenas por decidir o estado atual do personagem.
 	# Essa função define prioridade, de modo que apenas 1 estado é ativo por vez
 	
-	# Sai da função ser o jogador está atacando, mantendo-o em ataque
+	# Sai da função se o jogador está atacando, mantendo-o em ataque
 	if attacking:
 		current_state = PlayerState.ATTACK
 		return
@@ -142,13 +169,17 @@ func _update_animation(param_current_state):
 	
 	# Atualiza qual animação deve ser tocada, considerando o estado atual
 	# do personagem do jogo, DESCONSIDERANDO a animação de ataque. 
-	# A escolha se baseia por meio da cláusula 'match'
-	# que busca correspondências de maneira análoga à um switch-case
-	if animation_controller and param_current_state != PlayerState.ATTACK:
+	if animation_controller:
 		animation_controller.update_player_animation(param_current_state)
-
+	
+	# Inverte o sentido do Sprite do Player de acordo com 
+	# a direção de movimento
 	if velocity.x != 0:
 		sprite.flip_h = velocity.x < 0
+		
+	# Atualiza o pivo do player de acordo com o sentido de direção
+	# definido préviamente pela função 'handle_movement'
+	player_pivot.scale.x = facing_direction
 
 # ==============================================================================
 # FUNÇÃO DE CONTROLE DA GRAVIDADE
@@ -170,6 +201,17 @@ func _handle_movement(delta):
 	var direction := Input.get_axis("ui_left", "ui_right")
 	# Target speed indica velocidade horizontal máxima
 	var target_speed = direction * SPEED
+	
+	# Caso a direção definida pelo Input seja diferente de zero 
+	# o seu sentido é atualizado para a variável facing_direction
+	# a qual vai servir para o animador compreender como orientar
+	# os sprites.
+	if direction != 0:
+		
+		# O método sign retorna +1 se o valor da variável direction (nesse caso)
+		# for positivo e -1 se o valor for negativo. Trata-se de um método
+		# automático para retornar o sinal de um valor numérico
+		facing_direction = sign(direction)
 	
 	# A velocidade no eixo X vai de seu valor original até a velocidade 
 	# máxima definida a um passo positivo ou negativo de acordo com a 
@@ -218,32 +260,53 @@ func _handle_rotation(on_floor, param_spr_rotator, delta):
 		# Se o personagem não estiver em contato com o chão, a rotão retorna a 0
 		spr_rotator.rotation = 0
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#CONTINUAR DAQUI:
+	#PRECISO FAZER DUAS FUNÇÕES, UMA QUE GERENCIA O INICIO DO ATAQUE
+	#E OUTRA QUE GERENCIA SEU ENCERRAMENTO. A IDEIA É CONSEGUIR ATUALIZAR
+	#AS FLAGS SEPARADAMENTE
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 # ==============================================================================
 # INPUT DE ATAQUE
 # ==============================================================================
-func _handle_attack_input(on_wall):
-	
-	# Sai da função caso o jogador já esteja no estado de ataque
-	if attacking:
-		return
-	
+func _start_handle_attack(on_wall):
+
 	# Entra no fluxo de ataque caso o botão seja pressionado e o jogados
 	# não esteja em contato com alguma parede
 	if Input.is_action_just_pressed("attack") and not on_wall:
 		
-		# Atualiza a flag de ataque e 
-		# Inicia o método que controla o Ataque no Script associado
-		# ao nó Attack Controller
+		# Muda a flag de ataque e o estado do player
 		attacking = true
+		print_debug('Estado atual:', current_state)
+		# Chama a função que dá início ao ataque
 		if attack_controller:
 			attack_controller.start_attack()
 			
-# ==============================================================================
-# CALLBACK OARA O ATAQUE
-# ==============================================================================
-
-func _on_attack_finished():
-	
-	# Quando o nó attack_controller emitir o sinal denominado "attack_finished", 
-	# a flag de ataque é atualizada e definida como 'False'
-	attacking = false
+	#if animation_controller.has_signal("ANIM_FINISHED_ATK"):
+	if animation_controller.ANIM_FINISHED_ATK:
+		attacking = false

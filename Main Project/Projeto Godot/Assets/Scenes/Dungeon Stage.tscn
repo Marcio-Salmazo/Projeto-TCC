@@ -13,6 +13,37 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vt8wg"]
 size = Vector2(14.129, 19)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_had05"]
+atlas = ExtResource("5_lkxbn")
+region = Rect2(28, 48, 44, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10b4v"]
+atlas = ExtResource("5_lkxbn")
+region = Rect2(72, 48, 44, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m74cd"]
+atlas = ExtResource("5_lkxbn")
+region = Rect2(116, 48, 44, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lkxbn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_had05")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10b4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m74cd")
+}],
+"loop": false,
+"name": &"Blade Animation",
+"speed": 3.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x645v"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_crp41"]
 atlas = ExtResource("5_vt8wg")
 region = Rect2(0, 0, 32, 32)
@@ -206,37 +237,6 @@ animations = [{
 "speed": 3.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_had05"]
-atlas = ExtResource("5_lkxbn")
-region = Rect2(28, 48, 44, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_10b4v"]
-atlas = ExtResource("5_lkxbn")
-region = Rect2(72, 48, 44, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m74cd"]
-atlas = ExtResource("5_lkxbn")
-region = Rect2(116, 48, 44, 48)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_lkxbn"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_had05")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_10b4v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m74cd")
-}],
-"loop": true,
-"name": &"Blade Animation",
-"speed": 3.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_x645v"]
-
 [node name="Dungeon Scene" type="Node2D" unique_id=572524228]
 
 [node name="Stage Tiles" type="Node" parent="." unique_id=1691291896]
@@ -285,18 +285,9 @@ process_callback = 0
 
 [node name="Player Visuals" type="Node2D" parent="Player/Player CharacterBody2D" unique_id=2106375638]
 
-[node name="Main Sprites" type="Node2D" parent="Player/Player CharacterBody2D/Player Visuals" unique_id=2118033836]
+[node name="Player Pivot" type="Node2D" parent="Player/Player CharacterBody2D/Player Visuals" unique_id=2138533738]
 
-[node name="AnimatedSprite2D (player)" type="AnimatedSprite2D" parent="Player/Player CharacterBody2D/Player Visuals/Main Sprites" unique_id=619125518]
-texture_filter = 1
-texture_repeat = 1
-scale = Vector2(0.7, 0.7)
-sprite_frames = SubResource("SpriteFrames_dlglw")
-animation = &"Player Attack"
-speed_scale = 3.0
-
-[node name="AnimatedSprite2D (sword)" type="AnimatedSprite2D" parent="Player/Player CharacterBody2D/Player Visuals/Main Sprites" unique_id=1282740610]
-visible = false
+[node name="AnimatedSprite2D (sword)" type="AnimatedSprite2D" parent="Player/Player CharacterBody2D/Player Visuals/Player Pivot" unique_id=1282740610]
 texture_filter = 1
 texture_repeat = 1
 position = Vector2(20, 5)
@@ -307,6 +298,29 @@ frame = 2
 frame_progress = 1.0
 speed_scale = 5.0
 
+[node name="Attack Hitbox Area2D" type="Area2D" parent="Player/Player CharacterBody2D/Player Visuals/Player Pivot" unique_id=1017545779]
+position = Vector2(12.29, 2.45)
+collision_layer = 4
+collision_mask = 2
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Player CharacterBody2D/Player Visuals/Player Pivot/Attack Hitbox Area2D" unique_id=104548716]
+scale = Vector2(0.7, 0.7)
+shape = SubResource("CircleShape2D_x645v")
+disabled = true
+
+[node name="Player Sprite" type="Node2D" parent="Player/Player CharacterBody2D/Player Visuals" unique_id=515879326]
+
+[node name="AnimatedSprite2D (player)" type="AnimatedSprite2D" parent="Player/Player CharacterBody2D/Player Visuals/Player Sprite" unique_id=619125518]
+texture_filter = 1
+texture_repeat = 1
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_dlglw")
+animation = &"Player Attack"
+frame = 4
+frame_progress = 1.0
+speed_scale = 3.0
+
 [node name="Controllers" type="Node" parent="Player" unique_id=1039228365]
 
 [node name="Events Controller" type="Node" parent="Player/Controllers" unique_id=731126768]
@@ -314,21 +328,13 @@ script = ExtResource("3_j70o8")
 
 [node name="Animations Controller" type="Node" parent="Player/Controllers" unique_id=1514507279]
 script = ExtResource("5_5sed6")
-player_sprite_path = NodePath("../../Player CharacterBody2D/Player Visuals/Main Sprites/AnimatedSprite2D (player)")
-blade_effects_sprite_path = NodePath("../../Player CharacterBody2D/Player Visuals/Main Sprites/AnimatedSprite2D (sword)")
+player_sprite_path = NodePath("../../Player CharacterBody2D/Player Visuals/Player Sprite/AnimatedSprite2D (player)")
+blade_effects_sprite_path = NodePath("../../Player CharacterBody2D/Player Visuals/Player Pivot/AnimatedSprite2D (sword)")
+atack_controler_path = NodePath("../Attack Controller")
 
 [node name="Attack Controller" type="Node" parent="Player/Controllers" unique_id=461019163]
 script = ExtResource("9_lkxbn")
-hitbox_path = NodePath("../../Hitboxes/Attack Hitbox Area2D")
+hitbox_path = NodePath("../../Player CharacterBody2D/Player Visuals/Player Pivot/Attack Hitbox Area2D")
 animator_controller_path = NodePath("../Animations Controller")
 
 [node name="Hitboxes" type="Node" parent="Player" unique_id=366497991]
-
-[node name="Attack Hitbox Area2D" type="Area2D" parent="Player/Hitboxes" unique_id=1017545779]
-collision_layer = 4
-collision_mask = 2
-monitoring = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Hitboxes/Attack Hitbox Area2D" unique_id=104548716]
-shape = SubResource("CircleShape2D_x645v")
-disabled = true
